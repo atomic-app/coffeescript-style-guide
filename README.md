@@ -102,6 +102,15 @@ bar:
 
 UTF-8 is the preferred source file encoding.
 
+<a name='file_names'/>
+### File Names
+
+Multi word file names should be hyphenated, not underscored or camelcased:
+
+```
+handle-errors.coffee
+```
+
 <a name="module_imports"/>
 ## Module Imports
 
@@ -271,12 +280,9 @@ In cases where method calls are being chained and the code does not fit on a sin
   .reduce((x, y) -> x + y)
 ```
 
-When calling functions, choose to omit or include parentheses in such a way that optimizes for readability. Keeping in mind that "readability" can be subjective, the following examples demonstrate cases where parentheses have been omitted or included in a manner that the community deems to be optimal:
+In most cases when calling functions include parentheses. There are cases when including parantheses will compromise readability, so feel free to omit them in these cases. Keeping in mind that "readability" can be subjective, the following examples demonstrate cases where parentheses have been omitted or included in a manner that the community deems to be optimal:
 
 ```coffeescript
-baz 12
-
-brush.ellipse x: 10, y: 20 # Braces can also be omitted or included for readability
 
 foo(4).bar(8)
 
@@ -285,6 +291,9 @@ obj.value(10, 20) / obj.value(20, 10)
 print inspect value
 
 new Tag(new Value(a, b), new Arg(c))
+
+module.exports = (name) ->
+  /(\.(js|coffee)$)/i.test(path.extname(name))
 ```
 
 You will sometimes see parentheses used to group functions (instead of being used to group function parameters). Examples of using this style (hereafter referred to as the "function grouping style"):
